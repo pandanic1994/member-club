@@ -1,8 +1,9 @@
 'use client';
 
-import { Plus } from 'lucide-react';
-import { ActionTooltip } from '../action-tooltip';
 import { useModal } from '@/hooks/use-modal-store';
+import { Plus } from 'lucide-react';
+
+import { ActionTooltip } from '../action-tooltip';
 
 export const NavigationAction = () => {
     const { onOpen } = useModal();
@@ -11,6 +12,7 @@ export const NavigationAction = () => {
         <div>
             <ActionTooltip side="right" align="center" label="add a server">
                 <button
+                    type="button"
                     onClick={() => onOpen('createServer')}
                     className="tw-group tw-flex tw-items-center"
                 >
@@ -22,8 +24,8 @@ export const NavigationAction = () => {
             group-hover:tw-bg-emerald-500 dark:tw-bg-neutral-700"
                     >
                         <Plus
-                            className="group-hover:tw-text-white tw-transition
-                    tw-text-emerald-500"
+                            className="tw-text-emerald-500 tw-transition
+                    group-hover:tw-text-white"
                             size={25}
                         />
                     </div>

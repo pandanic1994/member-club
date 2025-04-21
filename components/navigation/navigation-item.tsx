@@ -1,10 +1,12 @@
 'use client';
 
-import Image from 'next/image';
+import type { FC } from 'react';
+
 import { cn } from '@/lib/utils';
-import { FC } from 'react';
-import { ActionTooltip } from '../action-tooltip';
+import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
+
+import { ActionTooltip } from '../action-tooltip';
 
 interface NavigationItemProps {
     id: string;
@@ -22,7 +24,11 @@ export const NavigationItem: FC<NavigationItemProps> = ({ id, name, imageUrl }) 
 
     return (
         <ActionTooltip side="right" align="center" label={name}>
-            <button onClick={onClick} className="tw-group tw-relative tw-flex tw-items-center ">
+            <button
+                type="button"
+                onClick={onClick}
+                className="tw-group tw-relative tw-flex tw-items-center "
+            >
                 <div
                     className={cn(
                         'tw-absolute tw-left-0 tw-bg-primary tw-rounded-full tw-transition-all tw-w-[4px]',
