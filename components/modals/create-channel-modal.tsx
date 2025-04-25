@@ -10,12 +10,16 @@ import {
     FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { useModal } from '@/hooks/use-modal-store';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ChannelType } from '@prisma/client';
 import axios from 'axios';
 import { useParams, useRouter } from 'next/navigation';
+import qs from 'query-string';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
-import qs from 'query-string';
+
 import {
     Dialog,
     DialogContent,
@@ -24,10 +28,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from '../ui/dialog';
-import { useModal } from '@/hooks/use-modal-store';
-import { ChannelType } from '@prisma/client';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { useEffect } from 'react';
 
 const formSchema = z.object({
     name: z
@@ -103,7 +104,7 @@ export const CreateChannelModal = () => {
                                     return (
                                         <FormItem>
                                             <FormLabel
-                                                className="tw-uppercase tw-text-xs tw-font-bold 
+                                                className="tw-text-xs tw-font-bold tw-uppercase 
                                             tw-text-zinc-500 dark:tw-text-secondary/70"
                                             >
                                                 频道名称
@@ -111,8 +112,8 @@ export const CreateChannelModal = () => {
                                             <FormControl>
                                                 <Input
                                                     disabled={isLoading}
-                                                    className="tw-bg-zinc-300/50 tw-border-0 
-                                                    focus-visible:tw-ring-0 tw-text-black 
+                                                    className="tw-border-0 tw-bg-zinc-300/50 
+                                                    tw-text-black focus-visible:tw-ring-0 
                                                     focus-visible:tw-ring-offset-0"
                                                     placeholder="输入频道名称"
                                                     {...field}
@@ -137,9 +138,9 @@ export const CreateChannelModal = () => {
                                         >
                                             <FormControl>
                                                 <SelectTrigger
-                                                    className="tw-bg-zinc-300/50
-                                                tw-border-0 focus:tw-ring-0 tw-text-black tw-ring-offset-0
-                                                focus:tw-offset-0 tw-capitalize tw-outline-none"
+                                                    className="focus:tw-offset-0
+                                                tw-border-0 tw-bg-zinc-300/50 tw-capitalize tw-text-black
+                                                tw-outline-none tw-ring-offset-0 focus:tw-ring-0"
                                                 >
                                                     <SelectValue placeholder="选择创建的频道类型" />
                                                 </SelectTrigger>
